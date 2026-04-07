@@ -1,6 +1,7 @@
 import sys
+import json
 
-from crawl import get_html
+from crawl import crawl_page, get_html
 
 def main():
     argv_len = len(sys.argv)
@@ -12,8 +13,9 @@ def main():
         return sys.exit(1)
     base_url = sys.argv[1]
     print(f"starting crawl of {base_url}")
-    html = get_html(base_url)
-    print("html", html)
+    crawled = crawl_page(base_url)
+    for link in crawled:
+        print(f"link: {link}, crawled:\n {json.dumps(obj=crawled[link], indent=2)}")
     return sys.exit(0)
 
 
