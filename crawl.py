@@ -1,5 +1,18 @@
+import requests
+
 from urllib.parse import urljoin, urlparse
 from bs4 import BeautifulSoup
+
+
+def get_html(url):
+    attempt = requests.get(url, headers={"User-Agent": "BootCrawler/1.0"})
+    if attempt.status_code >= 400:
+        return f"fail to fetch {url}, receiving status_code: {attempt.status_code}"
+    content_type = attempt.headers.get("content-type")
+    if content_type is not None and "html" in content_type:
+        return attempt.text
+    print(f"content_type: {content_type}")
+    return f"not valid content type: {content_type}"
 
 def get_heading_from_html(html):
     soup = BeautifulSoup(html, 'html.parser')
