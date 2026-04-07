@@ -1,11 +1,17 @@
 import sys
-import json
+import asyncio
+import time
 
-from crawl import crawl_page, get_html
+from async_crawler import AsyncCrawler
 
-def main():
+
+async def crawl_site_async(url):
+    async with AsyncCrawler(url, 20, 2) as site:
+        return await site.crawl()
+
+async def main():
     argv_len = len(sys.argv)
-    if  argv_len < 2:
+    if argv_len < 2:
         print("no website provided")
         return sys.exit(1)
     if argv_len > 2:
@@ -13,11 +19,14 @@ def main():
         return sys.exit(1)
     base_url = sys.argv[1]
     print(f"starting crawl of {base_url}")
-    crawled = crawl_page(base_url)
-    for link in crawled:
-        print(f"link: {link}, crawled:\n {json.dumps(obj=crawled[link], indent=2)}")
+    start = time.perf_counter()
+    crawled = await crawl_site_async(base_url)
+    elapsed = time.perf_counter() - start
+    print(crawled)
+    print(f"Elapsed: {elapsed:6f}ms")
     return sys.exit(0)
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
+    
