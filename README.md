@@ -6,7 +6,7 @@ WEB crawler tutorial from boot.dev
 
 - `uv sync`
 - `uv run main.py "website" max-concurrency max-pages`
-- `uv run main.py "withadrian.space" 4 10`
+- `uv run main.py "https://withadrian.space" 4 10`
 
 
 ## Supported functions:
