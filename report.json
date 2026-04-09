@@ -16,6 +16,22 @@
     "image_urls": []
   },
   {
+    "url": "https://withadrian.space/posts/bin/deno on vercel/",
+    "heading": "deno on vercel ",
+    "first_paragraph": "Vercel\u2019s build image is aimed at Node workflows, so Deno is not on PATH by default. Install it once at the start of the build, then run whatever you have in deno.json (for example deno task build for Lume or other static pipelines).",
+    "outgoing_links": [
+      "https://withadrian.space/",
+      "https://docs.deno.com/runtime/getting_started/installation/",
+      "https://withadrian.space/",
+      "mailto:adrianprach@gmail.com",
+      "https://github.com/adrianprach",
+      "https://x.com/adrianprach"
+    ],
+    "image_urls": [
+      "https://withadrian.space/assets/Pasted%20image%2020260326235355.png"
+    ]
+  },
+  {
     "url": "https://withadrian.space/posts/gnome/",
     "heading": "gnome ",
     "first_paragraph": "",
